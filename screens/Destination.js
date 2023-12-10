@@ -36,8 +36,9 @@ export default function Destination({ navigation, route }) {
     }
 
     return <View style={styles.container}>
-        <Text>Pickup Location: {pickupLocation.name}</Text>
-        <TextInput
+        <Text style={{color:'white'}}>Pickup Location: {pickupLocation.name}</Text>
+        <TextInput 
+        style={styles.input}
             placeholder='Enter destination'
             onChangeText={getLocationsFromText}
         />
@@ -73,7 +74,7 @@ export default function Destination({ navigation, route }) {
             })}
         </View>
 
-        <Button title="Car Selection" onPress={() => navigation.navigate('Select your Ride', {
+        <Button title="Car Selection" color='black' onPress={() => navigation.navigate('Select your Ride', {
             pickupLocation, destinationLocation: location
         })} />
     </View>
@@ -82,8 +83,14 @@ export default function Destination({ navigation, route }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor:'black',
+    },
+    input: {
+        width: 350,
+        height: 30,
+        backgroundColor: 'white'
     },
     map: {
         width: '100%',
@@ -91,8 +98,10 @@ const styles = StyleSheet.create({
     },
     absolute: {
         position: 'absolute',
-        width: 200,
-        top: 60,
-        backgroundColor: 'white'
+        width: 250,
+        top: 50,
+        backgroundColor: '#f0f0f0',
+        borderRadius: 10,
+        // padding: 3
     }
 });

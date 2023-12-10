@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button } from "react-native"
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native"
 import * as Location from 'expo-location';
 
 export default function Pickup({ navigation }) {
@@ -61,17 +61,16 @@ export default function Pickup({ navigation }) {
     if (errorMsg) {
         return <Text>{errorMsg}</Text>
     }
-
     if (!location) {
         return <Text>Loading...</Text>
     }
 
     return <View style={styles.container}>
         <TextInput
+            style={styles.input}
             placeholder='Enter your Pickup location...'
             onChangeText={getLocationsFromText}
         />
-
         <MapView style={styles.map}
             region={{
                 latitude: location.coords.latitude,
@@ -79,7 +78,7 @@ export default function Pickup({ navigation }) {
                 latitudeDelta: 0.00005,
                 longitudeDelta: 0.00005
             }}>
-            <Marker 
+            <Marker
                 coordinate={{
                     latitude: location.coords.latitude,
                     longitude: location.coords.longitude,
@@ -98,24 +97,31 @@ export default function Pickup({ navigation }) {
                 </TouchableOpacity>
             })}
         </View>
-        {/* <Button title="Select Destination" onPress={() => navigation.navigate('Destination')} /> */}
     </View>
 }
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'space-around',
+        // justifyContent: 'space-around',
         alignItems: 'center'
     },
+    input: {
+        width: 350,
+        height: 30,
+        backgroundColor: 'white'
+    },
     map: {
-        width: '100%',
-        height: '80%',
+        width: '100%', 
+        height: '90%',
     },
     absolute: {
         position: 'absolute',
-        width: 200,
-        top: 60,
-        backgroundColor: 'white'
-    }
+        width: 250,
+        top: 50,
+        backgroundColor: '#f0f0f0',
+        borderRadius: 10,
+        // padding: 10
+     }
 });

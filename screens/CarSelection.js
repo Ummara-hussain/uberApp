@@ -74,19 +74,20 @@ export default function CarSelection({ navigation, route }) {
     }
 
     return <View style={styles.container}>
-        <Text>Pickup Location: {pickupLocation.name} {"\n"}
+        <Text style={{ color: 'white' }}>Pickup Location: {pickupLocation.name} {"\n"}
             Destination Location: {destinationLocation.coords.location.name}
         </Text>
-        <Text>Distance: {distance.toFixed(2)} KM {"\n"}
+        <Text style={{ color: 'white' }}>Distance: {distance.toFixed(2)} KM {"\n"}
             Fare: Rs. {Math.round(fare)} {"\n"}
             Your Ride: {rideType}</Text>
 
-        <View>
+        <View style={{ paddingTop: 100, display: 'flex' }}>
+            <Text style={{ color: 'white', fontSize: 19, }}>Choose your ride to know total fare:</Text>
             <Text style={styles.rides} onPress={() => {
                 setRideType('Bike')
                 setFare(distance * 70)
             }}>Bike
-                <Image source={{ uri: 'https://www.uber-assets.com/image/upload/f_auto,q_auto:eco,c_fill,w_956,h_538/v1571927853/assets/39/c1c2c7-61eb-4432-9bac-728b974207e7/original/cityscoot-icon-mobile.png' }}
+                <Image source={{ uri: 'https://www.iconexperience.com/_img/m_collection_png/256x256/plain/motorbike.png' }}
                     style={styles.image} /></Text>
             <Text style={styles.rides} onPress={() => {
                 setRideType('Auto Rikshaw')
@@ -98,7 +99,7 @@ export default function CarSelection({ navigation, route }) {
                 setRideType('Mini Ride')
                 setFare(distance * 150)
             }}>Mini Ride
-                <Image source={{ uri: 'https://w7.pngwing.com/pngs/1012/760/png-transparent-compact-car-2010-toyota-corolla-suzuki-cultus-car-compact-car-car-window.png' }}
+                <Image source={{ uri: 'https://icon-library.com/images/white-car-icon/white-car-icon-9.jpg' }}
                     style={styles.image} /></Text>
             <Text style={styles.rides} onPress={() => {
                 setRideType('AC Ride')
@@ -108,7 +109,7 @@ export default function CarSelection({ navigation, route }) {
                     style={styles.image} /></Text>
         </View>
 
-        <Button title="LET'S GO!" onPress={() => requestRide()} />
+        <Button color='black' title="LET'S GO!" onPress={() => requestRide()} />
         {loading && <ActivityIndicator size='large' />}
 
     </View>
@@ -117,17 +118,24 @@ export default function CarSelection({ navigation, route }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        fontSize: 10,
+        // backgroundColor: '#fff',
         // alignItems: 'center',
-        justifyContent: 'center',
+        // justifyContent: 'center',
+        backgroundColor: 'black',
+        color: 'white',
+        paddingTop: 30,
+        paddingLeft: 10,
+        paddingRight: 10,
     },
     image: {
-        width: 40,
+        width: 50,
         height: 40,
     },
     rides: {
-        fontSize: 14,
-        backgroundColor: 'white',
+        fontSize: 16,
+        backgroundColor: 'black',
+        color: 'white',
         margin: 3,
         padding: 1,
         height: 65,
